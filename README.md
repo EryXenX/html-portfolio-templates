@@ -23,7 +23,7 @@ Each template is designed for a different professional persona, with a distinct 
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/html-portfolio-templates.git
+   git clone [https://github.com/EryXenX/html-portfolio-templates.git]
    ```
 
 2. Open any template:
