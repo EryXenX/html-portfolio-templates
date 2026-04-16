@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Sharma — Engineering Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,600&family=Epilogue:wght@300;400;500;600&family=Epilogue:wght@300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#faf6ef;
+  --warm:#f0e9db;
+  --stone:#2c2418;
+  --stone2:#3d3326;
+  --amber:#c47c1e;
+  --amber-light:#e09840;
+  --amber-dim:rgba(196,124,30,0.12);
+  --text:#2c2418;
+  --text-muted:#7a6e5e;
+  --line:#ddd5c5;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:'Epilogue',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--cream);
+  border-bottom:1px solid var(--line);padding:1.1rem 5%;
+  display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:.8rem}
+.logo-mark{width:32px;height:32px;background:var(--stone);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:.85rem;color:var(--cream);font-weight:800}
+.logo-text{font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;color:var(--stone)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.72rem;color:var(--text-muted);text-decoration:none;
+  font-weight:500;transition:color .25s;letter-spacing:.04em}
+.nav-links a:hover{color:var(--stone)}
+.nav-hire{padding:.55rem 1.5rem;background:var(--stone);color:var(--cream);
+  font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;transition:background .3s;border-radius:2px}
+.nav-hire:hover{background:var(--amber)}
+
+/* HERO */
+.hero{padding:9rem 5% 5rem;display:grid;grid-template-columns:1fr 380px;
+  gap:5rem;align-items:center;min-height:90vh}
+.h-badge{display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--amber-dim);border:1px solid rgba(196,124,30,0.25);
+  padding:.4rem 1rem;margin-bottom:2.5rem}
+.h-badge-dot{width:6px;height:6px;background:var(--amber);border-radius:50%}
+.h-badge-text{font-size:.62rem;color:var(--amber);letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600}
+h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,5vw,4.5rem);
+  line-height:1.05;font-weight:800;margin-bottom:1.8rem;color:var(--stone)}
+h1 em{font-style:italic;font-weight:300;color:var(--amber)}
+.hero-sub{font-size:.9rem;line-height:1.85;color:var(--text-muted);
+  max-width:34rem;margin-bottom:3rem;font-weight:300}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:3rem}
+.htag{padding:.4rem 1rem;border:1px solid var(--line);font-size:.68rem;
+  color:var(--text-muted);font-weight:500}
+.hero-btn{display:inline-block;padding:.9rem 2.4rem;background:var(--stone);
+  color:var(--cream);font-size:.7rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;text-decoration:none;
+  transition:background .3s;border-radius:2px}
+.hero-btn:hover{background:var(--amber)}
+
+/* HERO SIDE CARD */
+.hero-side{display:flex;flex-direction:column;gap:1.5rem}
+.side-card{border:1px solid var(--line);padding:1.8rem;background:var(--warm)}
+.sc-label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);font-weight:600;margin-bottom:.6rem}
+.sc-val{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:800;
+  color:var(--stone);line-height:1}
+.sc-sub{font-size:.72rem;color:var(--text-muted);margin-top:.3rem}
+.sc-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.4rem}
+.sc-list li{font-size:.75rem;color:var(--text-muted);display:flex;
+  align-items:center;gap:.6rem}
+.sc-list li::before{content:'';width:4px;height:4px;background:var(--amber);
+  border-radius:50%;flex-shrink:0}
+
+/* STACK */
+.stack{padding:5rem 5%;background:var(--stone);color:var(--cream)}
+.stack-inner{display:grid;grid-template-columns:300px 1fr;gap:5rem;align-items:start}
+.stack h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;
+  margin-bottom:1rem;line-height:1.3}
+.stack-sub{font-size:.8rem;color:rgba(250,246,239,0.5);line-height:1.8;font-weight:300}
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.stack-item{background:var(--stone);padding:1.5rem;display:flex;
+  flex-direction:column;gap:.4rem;transition:background .25s}
+.stack-item:hover{background:var(--stone2)}
+.si-cat{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-light)}
+.si-name{font-size:.85rem;font-weight:500;color:rgba(250,246,239,0.85)}
+
+/* PROJECTS */
+.projects{padding:6rem 5%}
+.proj-header{display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:4rem}
+.proj-header h2{font-family:'Fraunces',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:600;color:var(--stone)}
+.proj-header a{font-size:.68rem;color:var(--amber);text-decoration:none;
+  letter-spacing:.08em;font-weight:600}
+.projects-list{display:flex;flex-direction:column;gap:0}
+.project-row{display:grid;grid-template-columns:1fr auto;gap:4rem;
+  padding:2.5rem 0;border-bottom:1px solid var(--line);align-items:center;
+  transition:padding-left .3s;cursor:pointer}
+.project-row:first-child{border-top:1px solid var(--line)}
+.project-row:hover{padding-left:.8rem}
+.pr-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;
+  margin-bottom:.4rem;color:var(--stone)}
+.pr-meta{font-size:.72rem;color:var(--amber);font-weight:600;
+  letter-spacing:.08em;margin-bottom:.6rem}
+.pr-desc{font-size:.78rem;color:var(--text-muted);max-width:38rem;
+  line-height:1.75;font-weight:300}
+.pr-tags{display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.pr-tag{padding:.25rem .7rem;background:var(--warm);font-size:.6rem;
+  color:var(--text-muted);font-weight:500}
+.pr-arrow{font-size:1.5rem;color:var(--line);transition:color .25s}
+.project-row:hover .pr-arrow{color:var(--amber)}
+
+/* EXPERIENCE */
+.exp{padding:5rem 5%;background:var(--warm)}
+.exp h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;
+  margin-bottom:3rem;color:var(--stone)}
+.exp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.exp-card{background:var(--cream);padding:2rem;border:1px solid var(--line)}
+.ec-period{font-size:.62rem;color:var(--amber);font-weight:600;
+  letter-spacing:.1em;margin-bottom:.8rem}
+.ec-role{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;
+  margin-bottom:.3rem;color:var(--stone)}
+.ec-co{font-size:.78rem;color:var(--text-muted);margin-bottom:.8rem}
+.ec-desc{font-size:.75rem;color:var(--text-muted);line-height:1.75;font-weight:300}
+
+/* CONTACT */
+.contact{padding:7rem 5%;text-align:center;border-top:3px solid var(--stone)}
+.contact h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:800;margin-bottom:1rem;color:var(--stone)}
+.contact h2 em{font-style:italic;font-weight:300;color:var(--amber)}
+.contact p{font-size:.85rem;color:var(--text-muted);max-width:28rem;
+  margin:0 auto 3rem;line-height:1.85;font-weight:300}
+.contact-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.c-btn{padding:.85rem 2.2rem;font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  transition:all .3s;border-radius:2px}
+.c-btn.fill{background:var(--stone);color:var(--cream)}
+.c-btn.fill:hover{background:var(--amber)}
+.c-btn.outline{border:1.5px solid var(--stone);color:var(--stone)}
+.c-btn.outline:hover{background:var(--stone);color:var(--cream)}
+
+footer{border-top:1px solid var(--line);padding:1.8rem 5%;
+  display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.65rem;color:var(--text-muted);letter-spacing:.06em}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:3rem;min-height:auto}
+  .stack-inner{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-cards{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links,.nav-hire{display:none}
+  .stack-grid{grid-template-columns:1fr}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.h-badge{animation:fadeUp .6s ease both .1s}
+h1{animation:fadeUp .6s ease both .22s}
+.hero-sub{animation:fadeUp .6s ease both .34s}
+.hero-tags{animation:fadeUp .6s ease both .44s}
+.hero-btn{animation:fadeUp .6s ease both .54s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">R</div>
+    <div class="logo-text">Ravi Sharma</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-hire">Hire Me</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="h-badge"><span class="h-badge-dot"></span><span class="h-badge-text">Open to Senior Roles</span></div>
+    <h1>Engineering<br>teams that<br><em>actually ship.</em></h1>
+    <p class="hero-sub">VP Engineering with 14 years building and scaling distributed systems and the teams behind them. I care as much about organizational health as I do about system reliability.</p>
+    <div class="hero-tags">
+      <div class="htag">Distributed Systems</div>
+      <div class="htag">Team Building</div>
+      <div class="htag">Platform Engineering</div>
+      <div class="htag">Cloud Architecture</div>
+    </div>
+    <a href="#contact" class="hero-btn">Start a Conversation</a>
+  </div>
+  <div class="hero-side">
+    <div class="side-card">
+      <div class="sc-label">Engineers Led</div>
+      <div class="sc-val">120+</div>
+      <div class="sc-sub">Across 8 engineering teams</div>
+    </div>
+    <div class="side-card">
+      <div class="sc-label">Current Stack Focus</div>
+      <ul class="sc-list">
+        <li>Go · Kubernetes · Terraform</li>
+        <li>AWS · GCP multi-cloud</li>
+        <li>PostgreSQL · Kafka · Redis</li>
+        <li>React · TypeScript</li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <div class="sc-label">Uptime Delivered</div>
+      <div class="sc-val">99.97%</div>
+      <div class="sc-sub">Across production systems</div>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="stack-inner">
+    <div>
+      <h2>A full-stack technology perspective.</h2>
+      <p class="stack-sub">From infrastructure to product, I maintain deep technical fluency across the systems I oversee — not just the org chart above them.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="si-cat">Infrastructure</div><div class="si-name">Kubernetes</div></div>
+      <div class="stack-item"><div class="si-cat">Infrastructure</div><div class="si-name">Terraform</div></div>
+      <div class="stack-item"><div class="si-cat">Cloud</div><div class="si-name">AWS / GCP</div></div>
+      <div class="stack-item"><div class="si-cat">Backend</div><div class="si-name">Go · Python</div></div>
+      <div class="stack-item"><div class="si-cat">Data</div><div class="si-name">Kafka · Postgres</div></div>
+      <div class="stack-item"><div class="si-cat">Observability</div><div class="si-name">Datadog · OTel</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="proj-header">
+    <h2>Notable Projects</h2>
+    <a href="#">All Case Studies →</a>
+  </div>
+  <div class="projects-list">
+    <div class="project-row">
+      <div>
+        <div class="pr-meta">Platform Re-architecture · 2024</div>
+        <div class="pr-title">Monolith to Microservices Migration</div>
+        <p class="pr-desc">Led 18-month decomposition of a 10-year-old Rails monolith into 24 domain services, reducing deployment frequency from weekly to 30+ times per day with zero customer-facing incidents.</p>
+        <div class="pr-tags">
+          <div class="pr-tag">Go</div><div class="pr-tag">Kubernetes</div>
+          <div class="pr-tag">Event Sourcing</div><div class="pr-tag">gRPC</div>
+        </div>
+      </div>
+      <div class="pr-arrow">↗</div>
+    </div>
+    <div class="project-row">
+      <div>
+        <div class="pr-meta">Infrastructure · 2023</div>
+        <div class="pr-title">Multi-region Disaster Recovery</div>
+        <p class="pr-desc">Designed and shipped active-active multi-region architecture reducing RTO from 4 hours to under 8 minutes. Saved $2.1M in projected downtime costs in first year of operation.</p>
+        <div class="pr-tags">
+          <div class="pr-tag">AWS</div><div class="pr-tag">Terraform</div>
+          <div class="pr-tag">Aurora Global</div>
+        </div>
+      </div>
+      <div class="pr-arrow">↗</div>
+    </div>
+    <div class="project-row">
+      <div>
+        <div class="pr-meta">Org Design · 2022</div>
+        <div class="pr-title">Engineering Hiring Scale (0→80)</div>
+        <p class="pr-desc">Built engineering org from 12 to 80 engineers in 14 months during Series B/C growth phase. Designed leveling framework, interview process, and onboarding program still in use today.</p>
+        <div class="pr-tags">
+          <div class="pr-tag">Org Design</div><div class="pr-tag">Leveling</div>
+          <div class="pr-tag">Technical Recruiting</div>
+        </div>
+      </div>
+      <div class="pr-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<section class="exp" id="experience">
+  <h2>Experience</h2>
+  <div class="exp-cards">
+    <div class="exp-card">
+      <div class="ec-period">2021 — Present</div>
+      <div class="ec-role">VP Engineering</div>
+      <div class="ec-co">Luminary Technologies</div>
+      <p class="ec-desc">Leading 7 engineering teams across platform, product, and data. Responsible for $18M annual infrastructure budget and engineering hiring strategy.</p>
+    </div>
+    <div class="exp-card">
+      <div class="ec-period">2017 — 2021</div>
+      <div class="ec-role">Director of Engineering</div>
+      <div class="ec-co">Crestline Software</div>
+      <p class="ec-desc">Built the platform engineering and developer experience functions from scratch. Led the company's first SOC 2 certification and GDPR compliance program.</p>
+    </div>
+    <div class="exp-card">
+      <div class="ec-period">2012 — 2017</div>
+      <div class="ec-role">Senior Software Engineer → EM</div>
+      <div class="ec-co">Axiom Systems</div>
+      <p class="ec-desc">IC-to-manager transition. Wrote the core real-time data pipeline still running in production, then moved to managing the team that maintains it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let's build something<br><em>that lasts.</em></h2>
+  <p>Open to VP/SVP Engineering roles at Series B+ companies, as well as fractional CTO engagements. Remote or hybrid considered.</p>
+  <div class="contact-row">
+    <a href="mailto:ravi@sharmaeng.io" class="c-btn fill">Email Me</a>
+    <a href="#" class="c-btn outline">LinkedIn Profile</a>
+    <a href="#" class="c-btn outline">Download CV</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ravi Sharma</p>
+  <p>Bangalore · Remote Worldwide</p>
+</footer>
+
+</body>
+</html>
