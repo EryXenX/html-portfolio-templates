@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sasha Morel — Creative Director</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;
+  --off:#f8f8f6;
+  --black:#0d0d0d;
+  --red:#d63c2a;
+  --red2:#b52d1c;
+  --red-dim:rgba(214,60,42,0.08);
+  --text:#0d0d0d;
+  --muted:#6b6b6b;
+  --line:#e0e0e0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);
+  border-bottom:2px solid var(--black);padding:.9rem 5%;
+  display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;
+  color:var(--black)}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;
+  font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-avail{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);border:2px solid var(--red);padding:.3rem .9rem}
+
+/* HERO - full brutalist width */
+.hero{padding:8rem 5% 0;min-height:95vh;display:flex;flex-direction:column;
+  justify-content:flex-end;position:relative;overflow:hidden;
+  border-bottom:2px solid var(--black)}
+.hero-top{margin-bottom:auto;padding-top:2rem}
+.hero-role{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;
+  font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1rem}
+h1{font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,14vw,16rem);
+  line-height:.92;letter-spacing:.01em;color:var(--black);
+  margin-bottom:0;word-break:break-word}
+h1 span{color:var(--red)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;
+  padding:3rem 0 2.5rem;border-top:1px solid var(--line);margin-top:2rem}
+.hero-desc{font-size:1rem;line-height:1.7;color:var(--muted);
+  max-width:28rem;font-weight:300}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.2rem}
+.hero-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;
+  line-height:1;color:var(--red);text-align:right}
+.hero-num-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-align:right}
+.hero-cta{display:flex;gap:1rem;align-items:center}
+.btn-black{padding:.75rem 2rem;background:var(--black);color:var(--white);
+  font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  transition:background .25s;border:2px solid var(--black)}
+.btn-black:hover{background:var(--red);border-color:var(--red)}
+.btn-red{padding:.75rem 2rem;background:transparent;color:var(--red);
+  font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  border:2px solid var(--red);transition:all .25s}
+.btn-red:hover{background:var(--red);color:var(--white)}
+
+/* TICKER */
+.ticker{overflow:hidden;border-bottom:2px solid var(--black);
+  padding:.7rem 0;background:var(--black)}
+.ticker-track{display:flex;gap:0;animation:ticker 18s linear infinite;width:max-content}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
+  letter-spacing:.12em;color:rgba(255,255,255,0.3);white-space:nowrap;
+  padding:0 2.5rem;border-right:1px solid rgba(255,255,255,0.1)}
+.ticker-item.red{color:var(--red)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* WORK GRID */
+.work{padding:5rem 5%}
+.work-header{display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:3rem;border-bottom:2px solid var(--black);padding-bottom:1.2rem}
+.work-header h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.04em}
+.work-header a{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);text-decoration:none}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--black)}
+.work-cell{background:var(--white);overflow:hidden;position:relative;cursor:pointer}
+.wc-img{width:100%;height:18rem;background:var(--off);overflow:hidden;position:relative}
+.wc-img-fill{width:100%;height:100%;transition:transform .5s ease}
+.work-cell:hover .wc-img-fill{transform:scale(1.04)}
+.wc-img-fill.c1{background:linear-gradient(145deg,#f0ebe0,#ddd5c0)}
+.wc-img-fill.c2{background:linear-gradient(145deg,#0d0d0d,#2a2a2a)}
+.wc-img-fill.c3{background:linear-gradient(145deg,#d63c2a,#8b1a0e)}
+.wc-img-fill.c4{background:linear-gradient(145deg,#e8e8e4,#c8c8c0)}
+.wc-img-fill.c5{background:linear-gradient(145deg,#0a1628,#1a3a5c)}
+.wc-img-fill.c6{background:linear-gradient(145deg,#1a2e1a,#2d5c2d)}
+.wc-info{padding:1.5rem}
+.wc-cat{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.4rem}
+.wc-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;
+  font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.3rem}
+.wc-client{font-size:.75rem;color:var(--muted)}
+.wc-arrow{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;
+  background:var(--red);color:var(--white);display:flex;align-items:center;
+  justify-content:center;font-size:1rem;opacity:0;transition:opacity .25s}
+.work-cell:hover .wc-arrow{opacity:1}
+
+/* ABOUT */
+.about{padding:6rem 5%;background:var(--black);color:var(--white);
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem}
+.about-left h2{font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,6rem);line-height:.95;
+  margin-bottom:2.5rem}
+.about-left h2 span{color:var(--red)}
+.about-awards{display:flex;flex-direction:column;gap:0}
+.award-row{display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.ar-name{font-family:'Barlow Condensed',sans-serif;font-size:.88rem;
+  font-weight:600;letter-spacing:.06em}
+.ar-year{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;
+  color:var(--red);font-weight:600;letter-spacing:.08em}
+.about-right{display:flex;flex-direction:column;justify-content:center}
+.about-right p{font-size:.9rem;line-height:1.85;color:rgba(255,255,255,0.55);
+  margin-bottom:1.2rem;font-weight:300}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.a-stat{border-left:3px solid var(--red);padding-left:1rem}
+.a-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;
+  color:var(--white);line-height:1}
+.a-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35)}
+
+/* SERVICES */
+.services{padding:6rem 5%}
+.services h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;
+  letter-spacing:.04em;margin-bottom:3rem;border-bottom:2px solid var(--black);
+  padding-bottom:1rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.svc-card{background:var(--white);padding:2.5rem;transition:background .25s}
+.svc-card:hover{background:var(--red-dim)}
+.svc-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;
+  color:var(--line);margin-bottom:1rem;line-height:1}
+.svc-name{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:.8rem;color:var(--black)}
+.svc-desc{font-size:.78rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* CONTACT */
+.contact{background:var(--red);color:var(--white);padding:7rem 5%;
+  display:flex;flex-direction:column;align-items:center;text-align:center}
+.contact h2{font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,10vw,10rem);line-height:.9;margin-bottom:2rem;
+  letter-spacing:.02em}
+.contact p{font-size:1rem;color:rgba(255,255,255,0.75);max-width:30rem;
+  margin-bottom:3rem;line-height:1.7;font-weight:300}
+.contact-btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center}
+.btn-white{padding:.8rem 2.2rem;background:var(--white);color:var(--red);
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  border:2px solid var(--white);transition:all .25s}
+.btn-white:hover{background:transparent;color:var(--white)}
+.btn-woutline{padding:.8rem 2.2rem;background:transparent;color:var(--white);
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  border:2px solid rgba(255,255,255,0.5);transition:border-color .25s}
+.btn-woutline:hover{border-color:var(--white)}
+
+footer{border-top:2px solid var(--black);padding:1.5rem 5%;
+  display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;
+  font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+@media(max-width:900px){
+  .work-grid{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .nav-links,.nav-avail{display:none}
+  h1{font-size:clamp(4rem,18vw,12rem)}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .work-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:1fr}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-role{animation:fadeUp .5s ease both .1s}
+h1{animation:fadeUp .6s ease both .22s}
+.hero-bottom{animation:fadeUp .6s ease both .4s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SASHA<span>.</span>MOREL</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-avail">Available Now</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-role">Creative Director · Brand Strategy · Art Direction</div>
+  </div>
+  <h1>MAKING<br>BRANDS <span>FELT.</span></h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">I build brand identities and visual systems for companies that want to be remembered. From strategy to execution — no filler, no fluff, just work that moves people.</p>
+    <div class="hero-right">
+      <div>
+        <div class="hero-num">130+</div>
+        <div class="hero-num-label">Brands Directed</div>
+      </div>
+      <div class="hero-cta">
+        <a href="#work" class="btn-black">View Work</a>
+        <a href="#contact" class="btn-red">Hire Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item red">Brand Identity</span>
+    <span class="ticker-item">Campaign Direction</span>
+    <span class="ticker-item red">Visual Systems</span>
+    <span class="ticker-item">Typography</span>
+    <span class="ticker-item red">Motion Design</span>
+    <span class="ticker-item">Art Direction</span>
+    <span class="ticker-item red">Brand Strategy</span>
+    <span class="ticker-item">Packaging</span>
+    <span class="ticker-item red">Brand Identity</span>
+    <span class="ticker-item">Campaign Direction</span>
+    <span class="ticker-item red">Visual Systems</span>
+    <span class="ticker-item">Typography</span>
+    <span class="ticker-item red">Motion Design</span>
+    <span class="ticker-item">Art Direction</span>
+    <span class="ticker-item red">Brand Strategy</span>
+    <span class="ticker-item">Packaging</span>
+  </div>
+</div>
+
+<section class="work" id="work">
+  <div class="work-header">
+    <h2>Selected Work</h2>
+    <a href="#">All Projects →</a>
+  </div>
+  <div class="work-grid">
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c1"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Brand Identity</div>
+        <div class="wc-title">Meridian Finance Rebrand</div>
+        <div class="wc-client">Meridian Capital Group · 2024</div>
+      </div>
+    </div>
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c2"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Campaign</div>
+        <div class="wc-title">VANTA Launch Campaign</div>
+        <div class="wc-client">Vanta Technology · 2024</div>
+      </div>
+    </div>
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c3"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Visual System</div>
+        <div class="wc-title">Red House Editorial Suite</div>
+        <div class="wc-client">Red House Media · 2023</div>
+      </div>
+    </div>
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c4"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Packaging</div>
+        <div class="wc-title">Atelier Skincare Identity</div>
+        <div class="wc-client">Atelier Labs · 2023</div>
+      </div>
+    </div>
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c5"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Art Direction</div>
+        <div class="wc-title">Crest Annual Report</div>
+        <div class="wc-client">Crestview Partners · 2022</div>
+      </div>
+    </div>
+    <div class="work-cell">
+      <div class="wc-img"><div class="wc-img-fill c6"></div></div>
+      <div class="wc-arrow">↗</div>
+      <div class="wc-info">
+        <div class="wc-cat">Brand Strategy</div>
+        <div class="wc-title">NordGrowth System</div>
+        <div class="wc-client">NordGrowth Fund · 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <h2>13 YEARS.<br>130 <span>BRANDS.</span><br>ZERO BORING.</h2>
+    <div class="about-awards">
+      <div class="award-row"><span class="ar-name">Cannes Lions — Silver, Brand Identity</span><span class="ar-year">2024</span></div>
+      <div class="award-row"><span class="ar-name">D&AD — Wood Pencil, Typography</span><span class="ar-year">2023</span></div>
+      <div class="award-row"><span class="ar-name">Clio Award — Gold, Campaign</span><span class="ar-year">2022</span></div>
+      <div class="award-row"><span class="ar-name">Communication Arts — Excellence</span><span class="ar-year">2021</span></div>
+    </div>
+  </div>
+  <div class="about-right">
+    <p>I've spent 13 years at the intersection of strategy and aesthetics, working with startups, PE-backed companies, and global brands on the identity systems that define how the world sees them.</p>
+    <p>Previously Creative Director at Wolff Olins New York. Before that, a decade in editorial — which is where I learned that constraints produce better work than freedom.</p>
+    <div class="about-stats">
+      <div class="a-stat"><div class="a-num">130+</div><div class="a-label">Brands Directed</div></div>
+      <div class="a-stat"><div class="a-num">18</div><div class="a-label">Awards Won</div></div>
+      <div class="a-stat"><div class="a-num">$420M</div><div class="a-label">Client Revenue Impacted</div></div>
+      <div class="a-stat"><div class="a-num">22</div><div class="a-label">Countries</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <h2>Services</h2>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <div class="svc-name">Brand Identity</div>
+      <p class="svc-desc">Naming, logo systems, color, typography, and the guidelines that keep it coherent at scale.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">02</div>
+      <div class="svc-name">Brand Strategy</div>
+      <p class="svc-desc">Positioning, competitive analysis, narrative frameworks, and the brand architecture that makes everything else work.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">03</div>
+      <div class="svc-name">Campaign Art Direction</div>
+      <p class="svc-desc">Concept to production for brand campaigns, product launches, and investor-facing materials.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">04</div>
+      <div class="svc-name">Visual Systems</div>
+      <p class="svc-desc">Editorial systems, design language documentation, and component libraries for product teams.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">05</div>
+      <div class="svc-name">Packaging Design</div>
+      <p class="svc-desc">Structural and graphic design for consumer product packaging with retail and e-commerce contexts.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">06</div>
+      <div class="svc-name">Creative Direction Retainer</div>
+      <p class="svc-desc">Ongoing creative leadership for in-house teams — the experienced hand that keeps quality consistent.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>LET'S MAKE SOMETHING.</h2>
+  <p>Taking on select projects for late 2025. If you have something worth building, let's talk about it.</p>
+  <div class="contact-btns">
+    <a href="mailto:sasha@morelstudio.com" class="btn-white">Send a Brief</a>
+    <a href="#" class="btn-woutline">View Full Case Studies</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Sasha Morel Studio</p>
+  <p>Paris · New York · Remote</p>
+</footer>
+
+</body>
+</html>
