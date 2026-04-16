@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadia Volkov — Financial Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --midnight:#06080f;
+  --slate:#0e1420;
+  --slate2:#141c2e;
+  --blue:#1e6fff;
+  --blue-bright:#4d8fff;
+  --blue-dim:rgba(30,111,255,0.15);
+  --white:#e8ecf5;
+  --white-dim:#6b7999;
+  --line:rgba(255,255,255,0.07);
+  --line2:rgba(30,111,255,0.2);
+}
+html{scroll-behavior:smooth}
+body{background:var(--midnight);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* GRID LINES BG */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:60px 60px;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(6,8,15,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  padding:1rem 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;
+  letter-spacing:.08em;color:var(--white)}
+.logo span{color:var(--blue)}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-size:.68rem;color:var(--white-dim);text-decoration:none;
+  letter-spacing:.1em;transition:color .25s;font-family:'Syne Mono',monospace}
+.nav-center a:hover{color:var(--blue-bright)}
+.nav-badge{padding:.4rem 1rem;border:1px solid var(--line2);
+  font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.1em;
+  color:var(--blue-bright);text-transform:uppercase}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:9rem 5% 6rem;
+  display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+.h-ticker{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.18em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.8rem}
+.h-ticker::before{content:'';width:1.5rem;height:2px;background:var(--blue)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5vw,4.4rem);
+  font-weight:800;line-height:1.0;margin-bottom:1.5rem;letter-spacing:-.02em}
+h1 .blue{color:var(--blue-bright)}
+.hero-tagline{font-size:.88rem;line-height:1.85;color:var(--white-dim);
+  max-width:32rem;margin-bottom:3rem;font-weight:300}
+.hero-btns{display:flex;gap:1rem}
+.btn-blue{padding:.8rem 2rem;background:var(--blue);color:var(--white);
+  font-family:'Syne Mono',monospace;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;
+  transition:background .3s,transform .2s}
+.btn-blue:hover{background:var(--blue-bright);transform:translateY(-1px)}
+.btn-ghost{padding:.8rem 2rem;border:1px solid var(--line2);color:var(--blue-bright);
+  font-family:'Syne Mono',monospace;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-ghost:hover{background:var(--blue-dim)}
+
+/* HERO TERMINAL CARD */
+.hero-card{background:var(--slate);border:1px solid var(--line2);
+  font-family:'Syne Mono',monospace;overflow:hidden}
+.card-header{background:var(--slate2);padding:.7rem 1.2rem;
+  display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--line)}
+.card-dot{width:8px;height:8px;border-radius:50%}
+.card-dot:nth-child(1){background:#ff5f56}
+.card-dot:nth-child(2){background:#ffbd2e}
+.card-dot:nth-child(3){background:#27c93f}
+.card-title{font-size:.6rem;color:var(--white-dim);letter-spacing:.1em;margin-left:.4rem}
+.card-body{padding:1.5rem}
+.kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--line);margin-bottom:1px}
+.kpi-cell{background:var(--slate);padding:1.2rem}
+.kpi-label{font-size:.55rem;letter-spacing:.14em;color:var(--white-dim);
+  text-transform:uppercase;margin-bottom:.4rem}
+.kpi-val{font-size:1.5rem;font-weight:700;font-family:'Syne',sans-serif;
+  color:var(--white);line-height:1}
+.kpi-val.up{color:#27c93f}
+.kpi-val.down{color:#ff5f56}
+.kpi-delta{font-size:.6rem;color:var(--white-dim);margin-top:.2rem}
+.kpi-delta.up{color:#27c93f}
+.card-separator{height:1px;background:var(--line);margin:1rem 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{padding:.3rem .8rem;border:1px solid var(--line2);
+  font-size:.58rem;color:var(--blue-bright);letter-spacing:.08em}
+
+/* SPECIALIZATIONS */
+.specs{position:relative;z-index:1;padding:5rem 5%;background:var(--slate)}
+.specs-inner{display:grid;grid-template-columns:280px 1fr;gap:5rem}
+.specs-left h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:700;line-height:1.2;margin-bottom:1rem}
+.specs-left p{font-size:.8rem;color:var(--white-dim);line-height:1.8;font-weight:300}
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.spec-card{background:var(--slate);padding:2rem;transition:background .25s}
+.spec-card:hover{background:var(--midnight)}
+.spec-icon{font-size:1.4rem;margin-bottom:1rem}
+.spec-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:600;
+  margin-bottom:.6rem}
+.spec-desc{font-size:.75rem;color:var(--white-dim);line-height:1.75;font-weight:300}
+
+/* TRACK RECORD */
+.track{position:relative;z-index:1;padding:6rem 5%}
+.track-header{display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:3rem}
+.track-header h2{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700}
+.track-header span{font-family:'Syne Mono',monospace;font-size:.62rem;
+  color:var(--white-dim);letter-spacing:.1em}
+.track-table{width:100%;border-collapse:collapse}
+.track-table th{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--white-dim);padding:.8rem 1.2rem;
+  border-bottom:1px solid var(--line);text-align:left}
+.track-table td{padding:1.3rem 1.2rem;border-bottom:1px solid var(--line);
+  font-size:.8rem}
+.track-table tr:hover td{background:var(--slate)}
+.td-deal{font-weight:500;color:var(--white)}
+.td-type{font-family:'Syne Mono',monospace;font-size:.62rem;
+  color:var(--blue-bright);letter-spacing:.06em}
+.td-val{font-family:'Syne',sans-serif;font-weight:600;color:#27c93f}
+.td-year{font-family:'Syne Mono',monospace;font-size:.65rem;color:var(--white-dim)}
+
+/* CREDENTIALS */
+.creds{position:relative;z-index:1;padding:5rem 5%;
+  background:linear-gradient(135deg,var(--slate2),var(--midnight));
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.creds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.cred-item{padding:2rem;border:1px solid var(--line);text-align:center}
+.cred-item:hover{border-color:var(--line2)}
+.cred-title{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:600;
+  margin-bottom:.4rem}
+.cred-body{font-size:.72rem;color:var(--white-dim);line-height:1.6}
+
+/* CONTACT */
+.contact{position:relative;z-index:1;padding:7rem 5%;text-align:center}
+.contact::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(30,111,255,0.06),transparent)}
+.contact-eyebrow{font-family:'Syne Mono',monospace;font-size:.62rem;
+  letter-spacing:.2em;color:var(--blue);text-transform:uppercase;margin-bottom:1.5rem}
+.contact h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:800;margin-bottom:1rem}
+.contact p{font-size:.85rem;color:var(--white-dim);max-width:28rem;
+  margin:0 auto 3rem;line-height:1.85;font-weight:300}
+.contact-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--line);
+  padding:1.8rem 5%;display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:'Syne Mono',monospace;font-size:.6rem;
+  color:var(--white-dim);letter-spacing:.08em}
+
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-card{display:none}}
+@media(max-width:900px){
+  .specs-inner{grid-template-columns:1fr}
+  .specs-grid{grid-template-columns:1fr}
+  .creds-grid{grid-template-columns:repeat(2,1fr)}
+  .track-table th:nth-child(3),.track-table td:nth-child(3){display:none}
+}
+@media(max-width:600px){
+  .nav-center,.nav-badge{display:none}
+  .creds-grid{grid-template-columns:1fr}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.h-ticker{animation:fadeUp .6s ease both .1s}
+h1{animation:fadeUp .6s ease both .22s}
+.hero-tagline{animation:fadeUp .6s ease both .34s}
+.hero-btns{animation:fadeUp .6s ease both .46s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nadia<span>.</span>Volkov</div>
+  <ul class="nav-center">
+    <li><a href="#specs">Focus</a></li>
+    <li><a href="#track">Track Record</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-badge">CFA · MBA · 18yr</div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="h-ticker">Financial Strategy · Capital Markets · Private Equity</div>
+    <h1>Allocating capital<br>toward <span class="blue">asymmetric</span><br>returns.</h1>
+    <p class="hero-tagline">Senior financial strategist with 18 years across investment banking, private equity, and C-suite advisory. I help organizations make better capital decisions under uncertainty.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-blue">Schedule a Call</a>
+      <a href="#track" class="btn-ghost">View Track Record</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="card-header">
+      <div class="card-dot"></div><div class="card-dot"></div><div class="card-dot"></div>
+      <span class="card-title">performance_summary.json</span>
+    </div>
+    <div class="card-body">
+      <div class="kpi-row">
+        <div class="kpi-cell">
+          <div class="kpi-label">Assets Advised</div>
+          <div class="kpi-val">$8.4B</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-label">IRR (avg)</div>
+          <div class="kpi-val up">24.6%</div>
+          <div class="kpi-delta up">↑ vs 18% benchmark</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-cell">
+          <div class="kpi-label">Deals Closed</div>
+          <div class="kpi-val">48</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-label">Win Rate</div>
+          <div class="kpi-val up">78%</div>
+        </div>
+      </div>
+      <div class="card-separator"></div>
+      <div class="tag-row">
+        <div class="tag">LBO</div>
+        <div class="tag">DCF</div>
+        <div class="tag">M&A</div>
+        <div class="tag">IPO</div>
+        <div class="tag">Credit</div>
+        <div class="tag">Structured Finance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="specs" id="specs">
+  <div class="specs-inner">
+    <div class="specs-left">
+      <h2>Core Areas of Practice</h2>
+      <p>Bringing analytical precision and board-level communication across the full deal lifecycle and strategic financial planning spectrum.</p>
+    </div>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <div class="spec-icon">◈</div>
+        <div class="spec-name">Capital Structure</div>
+        <p class="spec-desc">Optimal debt-equity mix, refinancing strategy, and covenant engineering across credit cycles.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">◉</div>
+        <div class="spec-name">M&A Advisory</div>
+        <p class="spec-desc">Buy-side and sell-side mandates from initial thesis to post-close value creation planning.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">▣</div>
+        <div class="spec-name">Private Equity</div>
+        <p class="spec-desc">Deal origination, underwriting, portfolio monitoring, and exit execution for mid-market buyouts.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">◎</div>
+        <div class="spec-name">CFO Advisory</div>
+        <p class="spec-desc">Fractional and project-based CFO services for high-growth companies and PE-backed platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="track" id="track">
+  <div class="track-header">
+    <h2>Selected Transactions</h2>
+    <span>18 years · $8.4B+ advised</span>
+  </div>
+  <table class="track-table">
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Type</th>
+        <th>Sector</th>
+        <th>Value</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-deal">Meridian Healthcare Platform Buyout</td>
+        <td class="td-type">LBO</td>
+        <td style="font-size:.78rem;color:var(--white-dim)">Healthcare</td>
+        <td class="td-val">$1.2B</td>
+        <td class="td-year">2024</td>
+      </tr>
+      <tr>
+        <td class="td-deal">NordLogistics Sale to Strategic Buyer</td>
+        <td class="td-type">M&A Sell-Side</td>
+        <td style="font-size:.78rem;color:var(--white-dim)">Industrials</td>
+        <td class="td-val">$680M</td>
+        <td class="td-year">2023</td>
+      </tr>
+      <tr>
+        <td class="td-deal">Vantage Renewables Debt Refinancing</td>
+        <td class="td-type">Structured Debt</td>
+        <td style="font-size:.78rem;color:var(--white-dim)">Energy</td>
+        <td class="td-val">$420M</td>
+        <td class="td-year">2022</td>
+      </tr>
+      <tr>
+        <td class="td-deal">Strata Consumer Goods IPO</td>
+        <td class="td-type">ECM</td>
+        <td style="font-size:.78rem;color:var(--white-dim)">Consumer</td>
+        <td class="td-val">$310M</td>
+        <td class="td-year">2022</td>
+      </tr>
+      <tr>
+        <td class="td-deal">Orbis Fintech Series D</td>
+        <td class="td-type">Growth Equity</td>
+        <td style="font-size:.78rem;color:var(--white-dim)">Technology</td>
+        <td class="td-val">$95M</td>
+        <td class="td-year">2021</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="creds">
+  <div class="creds-grid">
+    <div class="cred-item">
+      <div class="cred-title">CFA Charterholder</div>
+      <div class="cred-body">CFA Institute, 2009</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-title">MBA, Finance</div>
+      <div class="cred-body">Wharton School, University of Pennsylvania</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-title">Former VP</div>
+      <div class="cred-body">Goldman Sachs Investment Banking Division</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-title">Board Member</div>
+      <div class="cred-body">3 PE-backed portfolio companies (current)</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-eyebrow">Now Available for Mandates</div>
+  <h2>Capital needs a clear head.</h2>
+  <p>Available for sell-side advisory, fractional CFO roles, and board positions. All enquiries are confidential.</p>
+  <div class="contact-actions">
+    <a href="mailto:nadia@volkovfinancial.com" class="btn-blue">Send an Enquiry</a>
+    <a href="#" class="btn-ghost">Download Profile</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Nadia Volkov</p>
+  <p>Geneva · New York · London</p>
+</footer>
+
+</body>
+</html>
