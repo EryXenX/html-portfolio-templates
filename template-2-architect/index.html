@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elara Voss — Architecture & Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#f4f0e8;
+  --paper2:#ece8df;
+  --charcoal:#1c1c1c;
+  --charcoal2:#2e2e2e;
+  --rust:#b85c38;
+  --rust-light:#d4795a;
+  --muted:#7a7468;
+  --line:#d0c9bb;
+}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--charcoal);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 5%;border-bottom:1px solid var(--line);
+  background:var(--paper);mix-blend-mode:normal}
+.logo{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;
+  color:var(--charcoal);letter-spacing:.04em}
+.nav-right{display:flex;align-items:center;gap:2.5rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .25s;font-family:'DM Mono',monospace}
+.nav-links a:hover{color:var(--charcoal)}
+.nav-cta{padding:.55rem 1.2rem;background:var(--charcoal);color:var(--paper);
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;font-family:'DM Mono',monospace;transition:background .3s}
+.nav-cta:hover{background:var(--rust)}
+
+/* HERO - editorial split */
+.hero{display:grid;grid-template-columns:55% 45%;min-height:100vh;margin-top:0}
+.hero-left{padding:10rem 5% 5% 5%;display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--line)}
+.hero-index{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--rust);
+  letter-spacing:.2em;margin-bottom:3rem}
+h1{font-family:'Libre Baskerville',serif;font-size:clamp(3rem,5.5vw,5rem);
+  line-height:1.05;font-weight:700;margin-bottom:1.5rem;color:var(--charcoal)}
+h1 em{font-style:italic;font-weight:400;color:var(--rust)}
+.hero-role{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:2rem;
+  padding-bottom:2rem;border-bottom:1px solid var(--line)}
+.hero-desc{font-size:.9rem;line-height:1.85;color:var(--charcoal2);max-width:30rem;
+  font-weight:300;margin-bottom:3rem}
+.hero-scroll{display:flex;align-items:center;gap:1rem;
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase}
+.scroll-line{width:3rem;height:1px;background:var(--muted)}
+
+.hero-right{background:var(--paper2);display:flex;flex-direction:column;
+  justify-content:flex-end;padding:5%;position:relative;overflow:hidden}
+.hero-img-placeholder{position:absolute;inset:0;
+  background:linear-gradient(160deg,var(--paper2) 0%,#ddd5c4 100%);
+  display:flex;align-items:center;justify-content:center}
+.hero-img-placeholder span{font-family:'Libre Baskerville',serif;font-size:6rem;
+  color:rgba(28,28,28,0.06);font-weight:700;line-height:1}
+.hero-stats{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--line)}
+.hero-stat{background:var(--paper2);padding:1.5rem}
+.h-stat-num{font-family:'Libre Baskerville',serif;font-size:1.8rem;
+  color:var(--charcoal);margin-bottom:.3rem;font-weight:700}
+.h-stat-label{font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* SELECTED WORK */
+.work{padding:6rem 5%}
+.work-header{display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:4rem;border-bottom:1px solid var(--line);padding-bottom:1.5rem}
+.work-header h2{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:400}
+.work-header a{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rust);text-decoration:none}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--line)}
+.project-card{background:var(--paper);padding:2.5rem;transition:background .25s;cursor:pointer}
+.project-card:hover{background:var(--charcoal);color:var(--paper)}
+.project-card:hover .proj-cat,.project-card:hover .proj-year{color:rgba(244,240,232,0.5)}
+.project-card:hover .proj-title{color:var(--paper)}
+.project-card:hover .proj-arrow{color:var(--rust-light)}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem}
+.proj-cat{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rust);transition:color .25s}
+.proj-year{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);transition:color .25s}
+.proj-img{width:100%;height:10rem;background:var(--paper2);margin-bottom:1.5rem;
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.proj-img-inner{width:100%;height:100%;
+  background:linear-gradient(135deg,#ddd5c4,#c8bfb0)}
+.project-card:hover .proj-img-inner{background:linear-gradient(135deg,#3a3a3a,#2e2e2e)}
+.proj-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;
+  margin-bottom:.6rem;font-weight:400;transition:color .25s}
+.proj-location{font-size:.72rem;color:var(--muted);transition:color .25s}
+.proj-arrow{float:right;font-size:1.1rem;margin-top:.3rem;transition:color .25s}
+
+/* ABOUT */
+.about{padding:6rem 5%;background:var(--charcoal);color:var(--paper);
+  display:grid;grid-template-columns:1fr 1.6fr;gap:8rem;align-items:start}
+.about-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--rust-light);margin-bottom:1rem}
+.about-num{font-family:'Libre Baskerville',serif;font-size:8rem;
+  color:rgba(244,240,232,0.04);line-height:.9;font-weight:700}
+.about h2{font-family:'Libre Baskerville',serif;font-size:2rem;
+  font-weight:400;margin-bottom:2rem;line-height:1.3}
+.about p{font-size:.85rem;line-height:1.9;color:rgba(244,240,232,0.65);
+  margin-bottom:1.2rem;font-weight:300}
+.awards{margin-top:3rem}
+.award-item{display:flex;gap:2rem;padding:1rem 0;
+  border-top:1px solid rgba(244,240,232,0.1);align-items:baseline}
+.award-year{font-family:'DM Mono',monospace;font-size:.62rem;
+  color:var(--rust-light);min-width:3rem}
+.award-name{font-size:.78rem;color:rgba(244,240,232,0.75)}
+
+/* SERVICES */
+.services{padding:6rem 5%}
+.services h2{font-family:'Libre Baskerville',serif;font-size:1.8rem;
+  font-weight:400;margin-bottom:3rem}
+.services-list{display:flex;flex-direction:column;gap:0}
+.service-item{display:grid;grid-template-columns:3rem 1fr auto;
+  align-items:center;gap:2rem;padding:1.8rem 0;
+  border-bottom:1px solid var(--line);cursor:pointer;
+  transition:padding-left .3s}
+.service-item:hover{padding-left:.8rem}
+.s-num{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--rust)}
+.s-name{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400}
+.s-arrow{color:var(--muted);font-size:1.1rem}
+
+/* CONTACT */
+.contact{padding:6rem 5%;border-top:4px solid var(--charcoal);
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem}
+.contact h2{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:700;line-height:1.1}
+.contact h2 em{font-style:italic;font-weight:400;color:var(--rust)}
+.contact-right{display:flex;flex-direction:column;justify-content:center;gap:1.5rem}
+.contact-right p{font-size:.85rem;color:var(--muted);line-height:1.85;font-weight:300}
+.contact-btn{display:inline-block;padding:1rem 2.5rem;background:var(--charcoal);
+  color:var(--paper);font-family:'DM Mono',monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  align-self:flex-start;transition:background .3s}
+.contact-btn:hover{background:var(--rust)}
+
+footer{padding:2rem 5%;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.1em;color:var(--muted)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-height:40vh}
+  .projects-grid{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:2rem}
+  .contact{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hero-left{padding-top:7rem}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp .65s ease both}
+.hero-index{animation-delay:.05s}
+h1{animation-delay:.18s}
+.hero-role{animation-delay:.3s}
+.hero-desc{animation-delay:.42s}
+.hero-scroll{animation-delay:.54s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Elara Voss</div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">Studio</a></li>
+      <li><a href="#services">Services</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-index">00 / Principal Architect</div>
+    <h1>Space.<br>Built with<br><em>intention.</em></h1>
+    <div class="hero-role">Architecture · Interior Design · Urban Planning</div>
+    <p class="hero-desc">Elara Voss Studio creates environments that endure. From bespoke private residences to large-scale civic infrastructure, every project begins with rigorous research and ends with spaces people remember.</p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <span>EV</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="h-stat-num">18</div>
+        <div class="h-stat-label">Years Practice</div>
+      </div>
+      <div class="hero-stat">
+        <div class="h-stat-num">84</div>
+        <div class="h-stat-label">Projects Built</div>
+      </div>
+      <div class="hero-stat">
+        <div class="h-stat-num">11</div>
+        <div class="h-stat-label">Awards Won</div>
+      </div>
+      <div class="hero-stat">
+        <div class="h-stat-num">9</div>
+        <div class="h-stat-label">Countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="work-header">
+    <h2>Selected Work</h2>
+    <a href="#">View All Projects →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-cat">Residential</div>
+        <div class="proj-year">2024</div>
+      </div>
+      <div class="proj-img"><div class="proj-img-inner"></div></div>
+      <div class="proj-title">Meridian House <span class="proj-arrow">↗</span></div>
+      <div class="proj-location">Oslo, Norway</div>
+    </div>
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-cat">Civic</div>
+        <div class="proj-year">2023</div>
+      </div>
+      <div class="proj-img"><div class="proj-img-inner"></div></div>
+      <div class="proj-title">Cultural Arts Pavilion <span class="proj-arrow">↗</span></div>
+      <div class="proj-location">Copenhagen, Denmark</div>
+    </div>
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-cat">Commercial</div>
+        <div class="proj-year">2022</div>
+      </div>
+      <div class="proj-img"><div class="proj-img-inner"></div></div>
+      <div class="proj-title">Harbor Tower Complex <span class="proj-arrow">↗</span></div>
+      <div class="proj-location">Rotterdam, Netherlands</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="about-label">The Studio</div>
+    <div class="about-num">02</div>
+  </div>
+  <div>
+    <h2>Architecture as a discipline of listening.</h2>
+    <p>Elara Voss Studio was founded on the belief that great buildings emerge from deep understanding — of site, of culture, and of the people who will inhabit the space. We resist trends in favour of timeless clarity.</p>
+    <p>Based in Amsterdam with projects across Europe and Southeast Asia, our practice operates at the intersection of material honesty and spatial innovation. We work with private clients, municipalities, and cultural institutions.</p>
+    <div class="awards">
+      <div class="award-item"><div class="award-year">2024</div><div class="award-name">Archdaily Building of the Year — Residential Category</div></div>
+      <div class="award-item"><div class="award-year">2022</div><div class="award-name">Dezeen Award — Civic Architecture</div></div>
+      <div class="award-item"><div class="award-year">2020</div><div class="award-name">Dutch Design Award — Interior Space</div></div>
+      <div class="award-item"><div class="award-year">2018</div><div class="award-name">RIBA International Award</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <h2>Services</h2>
+  <div class="services-list">
+    <div class="service-item"><span class="s-num">01</span><span class="s-name">New Build Architecture</span><span class="s-arrow">↗</span></div>
+    <div class="service-item"><span class="s-num">02</span><span class="s-name">Interior Architecture & Design</span><span class="s-arrow">↗</span></div>
+    <div class="service-item"><span class="s-num">03</span><span class="s-name">Urban Planning & Masterplanning</span><span class="s-arrow">↗</span></div>
+    <div class="service-item"><span class="s-num">04</span><span class="s-name">Heritage & Adaptive Reuse</span><span class="s-arrow">↗</span></div>
+    <div class="service-item"><span class="s-num">05</span><span class="s-name">Feasibility & Design Consultancy</span><span class="s-arrow">↗</span></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let's build something <em>worth keeping.</em></h2>
+  <div class="contact-right">
+    <p>We take on a limited number of projects each year to ensure full attention to every commission. If you have a project in mind, we'd love to hear about it.</p>
+    <a href="mailto:studio@elaravoss.com" class="contact-btn">Start a Conversation →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Elara Voss Studio</p>
+  <p>Amsterdam · London · Singapore</p>
+</footer>
+
+</body>
+</html>
